@@ -38,3 +38,26 @@ Este proyecto ya está configurado para ser desplegado en GitHub Pages.
 
 ---
 Desarrollado con ❤️ por Oktober Lab.
+
+
+Cómo subirlo a GitHub y publicarlo:
+Para que la página esté online, sigue estos sencillos pasos en tu terminal (dentro de la carpeta del proyecto):
+
+Crea un repositorio en GitHub llamado Landing_page_oktober (o el nombre que prefieras).
+Vincula tu carpeta local con GitHub:
+powershell
+git remote add origin https://github.com/TU_USUARIO/Landing_page_oktober.git
+git branch -M main
+git push -u origin main
+Despliega la landing page:
+powershell
+npm run deploy
+Esto compilará el código y lo subirá a la rama gh-pages. Después de unos minutos, tu web estará visible en https://TU_USUARIO.github.io/Landing_page_oktober/.
+Comandos útiles:
+npm run dev: Para ver los cambios en tiempo real mientras editas.
+npm run build: Para generar la versión final de producción en la carpeta dist.
+npm run deploy: Para actualizar tu página en internet.
+He dejado un archivo 
+README.md
+ detallado en la raíz del proyecto con estas instrucciones para futuras consultas. ¡Tu landing page de Oktober Lab ya tiene una base sólida y profesional!
+
