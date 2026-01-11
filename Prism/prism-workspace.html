@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRISM Workspace | Your Productive Command Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #08080a;
+            --accent-color: #3a86ff;
+            --text-main: #ffffff;
+            --text-dim: #94a3b8;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        header {
+            padding: 2rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(8, 8, 10, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.5rem;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .lang-btn {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .lang-btn:hover {
+            border-color: var(--accent-color);
+        }
+
+        .hero {
+            padding: 8rem 0;
+            text-align: center;
+            background: radial-gradient(circle at top center, rgba(58, 134, 255, 0.15) 0%, transparent 70%);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo span span {
+            font-weight: 300;
+            opacity: 0.7;
+            font-size: 1.1rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-dim);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        .cta-btn {
+            background: var(--accent-color);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(58, 134, 255, 0.3);
+        }
+
+        .showcase {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .use-case-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .case-tab {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-dim);
+            padding: 0.75rem 1.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .case-tab.active {
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+
+        .app-mockup {
+            background: #050507;
+            border: 0.5px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            min-height: 500px;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.9);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .mock-header {
+            height: 60px;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 0.5px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.015);
+        }
+
+        .mock-header-center {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .mock-search {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 6px 12px;
+            width: 250px;
+            font-size: 0.75rem;
+            color: #64748b;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .mock-visor-editor {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: #64748b;
+        }
+
+        .mock-toggle {
+            width: 28px;
+            height: 14px;
+            background: #1e293b;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .mock-toggle::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            left: 2px;
+            top: 2px;
+        }
+
+        .mock-controls {
+            display: flex;
+            gap: 12px;
+            color: #64748b;
+        }
+
+        .app-body {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .mock-sidebar {
+            width: 220px;
+            background: rgba(0, 0, 0, 0.15);
+            border-right: 0.5px solid rgba(255, 255, 255, 0.08);
+            padding: 20px 12px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mock-item svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            color: #64748b;
+            transition: all 0.2s;
+            background-color: transparent;
+            /* Added this line */
+        }
+
+        .mock-item:hover svg,
+        .mock-item.active svg {
+            color: white;
+        }
+
+        .mock-item {
+            width: 100%;
+            padding: 10px 14px;
+            color: #64748b;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.2s;
+            font-size: 0.82rem;
+            margin-bottom: 4px;
+            background: transparent;
+        }
+
+        .mock-item:hover {
+            background: rgba(255, 255, 255, 0.06);
+            color: white;
+        }
+
+        .mock-item.active {
+            background: var(--accent-color);
+            color: white;
+            box-shadow: 0 8px 15px rgba(58, 134, 255, 0.25);
+        }
+
+        .mock-content-area {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+            background: transparent;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mock-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 20px;
+            flex: 1;
+        }
+
+        .mock-card {
+            background: rgba(255, 255, 255, 0.015);
+            border: 0.5px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            height: 160px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        /* Bent corner for notes */
+        .mock-card.has-note::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 15px 15px 0;
+            border-color: transparent var(--accent-color) transparent transparent;
+            opacity: 0.6;
+        }
+
+        .mock-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .mock-card svg {
+            width: 44px;
+            height: 44px;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+            background: rgba(58, 134, 255, 0.1);
+            padding: 10px;
+            border-radius: 12px;
+        }
+
+        .mock-card .card-title {
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 4px;
+            color: #f8fafc;
+        }
+
+        .mock-card .card-note {
+            font-size: 0.65rem;
+            color: #64748b;
+            text-align: center;
+        }
+
+        .mock-footer {
+            margin-top: auto;
+            padding-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.65rem;
+            color: #64748b;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.5;
+        }
+
+        .footer {
+            padding: 4rem 0;
+            border-top: 1px solid var(--glass-border);
+            text-align: center;
+            margin-top: 6rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .app-mockup {
+                grid-template-columns: 1fr;
+            }
+
+            .mock-sidebar {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <a href="#" class="logo">
+                <svg viewBox="0 0 100 100">
+                    <rect x="0" y="0" width="45" height="45" rx="8" fill="#1a1c1e" stroke="#3a86ff"
+                        stroke-width="2.5" />
+                    <rect x="55" y="0" width="45" height="45" fill="#3a86ff" />
+                    <rect x="0" y="55" width="45" height="45" rx="8" fill="#1a1c1e" stroke="#3a86ff"
+                        stroke-width="2.5" />
+                    <rect x="55" y="55" width="45" height="45" rx="8" fill="#1a1c1e" stroke="#3a86ff"
+                        stroke-width="2.5" />
+                </svg>
+                <span>PRISM <span>Workspace</span></span>
+            </a>
+            <div class="nav-actions">
+                <button id="lang-toggle" class="lang-btn" onclick="toggleLang()">ES</button>
+            </div>
+        </header>
+
+        <section class="hero">
+            <h1 id="hero-title">Your Command Center, Reinvented.</h1>
+            <p id="hero-desc">The visual workspace that professionalizes your routine. Organize folders, docs, and links
+                into contexts for frictionless focus.</p>
+            <a href="ms-windows-store://pdp/?ProductId=..." class="cta-btn" id="hero-cta">Download PRISM</a>
+        </section>
+
+        <section class="showcase">
+            <h2 class="section-title" id="showcase-title">Built for every professional</h2>
+            <div class="use-case-nav">
+                <button class="case-tab active" onclick="setUseCase('dev')" data-key="tab-dev">Developer</button>
+                <button class="case-tab" onclick="setUseCase('sales')" data-key="tab-sales">Sales</button>
+                <button class="case-tab" onclick="setUseCase('arch')" data-key="tab-arch">Architect</button>
+                <button class="case-tab" onclick="setUseCase('eng')" data-key="tab-eng">Civil Engineer</button>
+                <button class="case-tab" onclick="setUseCase('acc')" data-key="tab-acc">Accountant</button>
+            </div>
+
+            <div class="app-mockup">
+                <div class="mock-header">
+                    <div class="logo" style="font-size: 1rem; gap: 8px;">
+                        <svg viewBox="0 0 100 100" style="width: 18px; height: 18px;">
+                            <rect x="0" y="0" width="45" height="45" rx="8" fill="#1a1c1e" stroke="#3a86ff"
+                                stroke-width="2.5" />
+                            <rect x="55" y="0" width="45" height="45" fill="#3a86ff" />
+                            <rect x="0" y="55" width="45" height="45" rx="8" fill="#1a1c1e" stroke="#3a86ff"
+                                stroke-width="2.5" />
+                            <rect x="55" y="55" width="45" height="45" rx="8" fill="#1a1c1e" stroke="#3a86ff"
+                                stroke-width="2.5" />
+                        </svg>
+                        <span>PRISM <span>Workspace</span></span>
+                    </div>
+
+                    <div class="mock-header-center">
+                        <div class="mock-search">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                            <span data-i18n="header.search_placeholder">Buscar en el tablero...</span>
+                        </div>
+                        <div class="mock-visor-editor">
+                            <span style="opacity: 0.5;">VISOR</span>
+                            <div class="mock-toggle"></div>
+                            <span>EDITOR</span>
+                        </div>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" style="color: #3a86ff; opacity: 0.8;">
+                            <path d="M15.5 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3z"></path>
+                            <path d="M15 3v6h6"></path>
+                        </svg>
+                    </div>
+
+                    <div class="mock-controls">
+                        <span>—</span>
+                        <span>▢</span>
+                        <span>✕</span>
+                    </div>
+                </div>
+
+                <div class="app-body">
+                    <div class="mock-sidebar">
+                        <div style="font-size: 0.6rem; color: #64748b; margin-bottom: 15px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding-left: 14px;"
+                            id="context-label">Contextos</div>
+                        <div id="mock-contexts">
+                            <!-- Contexts injected here -->
+                        </div>
+                    </div>
+                    <div class="mock-content-area">
+                        <div class="mock-grid" id="mock-grid">
+                            <!-- Items injected here -->
+                        </div>
+                        <div class="mock-footer">
+                            <svg viewBox="0 0 100 100" style="width: 12px; height: 12px; fill: currentColor;">
+                                <rect x="0" y="0" width="45" height="45" rx="10" opacity="0.2" />
+                                <rect x="55" y="0" width="45" height="45" />
+                                <rect x="0" y="55" width="45" height="45" rx="10" opacity="0.2" />
+                                <rect x="55" y="55" width="45" height="45" rx="10" opacity="0.2" />
+                            </svg>
+                            <span>Oktober Lab</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="https://gw86-ar.github.io/Landing_page_oktober/" target="_blank"
+                    style="color: var(--accent-color); font-weight: 600;">Oktober Lab Official</a>
+                <a href="privacy.html" id="link-privacy">Privacy Policy</a>
+                <a href="terms.html" id="link-terms">Terms of Service</a>
+            </div>
+            <p id="footer-copy">&copy; 2026 Oktober Lab. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        const content = {
+            en: {
+                "hero-title": "Your Command Center, Reinvented.",
+                "hero-desc": "The visual workspace that professionalizes your routine. Organize folders, docs, and links into contexts for frictionless focus.",
+                "hero-cta": "Download PRISM",
+                "showcase-title": "Built for every professional",
+                "context-label": "Contexts",
+                "tab-dev": "Developer",
+                "tab-sales": "Sales",
+                "tab-arch": "Architect",
+                "tab-eng": "Civil Engineer",
+                "tab-acc": "Accountant",
+                "link-privacy": "Privacy Policy",
+                "link-terms": "Terms of Service",
+                "footer-copy": "&copy; 2026 Oktober Lab. All rights reserved."
+            },
+            es: {
+                "hero-title": "Tu Centro de Mando, Reinventado.",
+                "hero-desc": "El espacio de trabajo visual que profesionaliza tu rutina. Organiza carpetas, documentos y enlaces en contextos para un enfoque sin fricciones.",
+                "hero-cta": "Descargar PRISM",
+                "showcase-title": "Diseñado para cada profesional",
+                "context-label": "Contextos",
+                "tab-dev": "Programador",
+                "tab-sales": "Ventas",
+                "tab-arch": "Arquitecto",
+                "tab-eng": "Ing. Civil",
+                "tab-acc": "Contable",
+                "link-privacy": "Política de Privacidad",
+                "link-terms": "Términos de Servicio",
+                "footer-copy": "&copy; 2026 Oktober Lab. Todos los derechos reservados."
+            }
+        };
+
+        const useCases = {
+            dev: {
+                contexts: [
+                    { name: "Project Alpha", icon: "folder" },
+                    { name: "Dev Tools", icon: "app" },
+                    { name: "Docs", icon: "file" }
+                ],
+                items: {
+                    "Project Alpha": [
+                        { name: "VS Code", type: "app", note: "Main IDE" },
+                        { name: "Local Server", type: "link", note: "localhost:3000" },
+                        { name: "Repo Folder", type: "folder", note: "Git source" }
+                    ],
+                    "Dev Tools": [
+                        { name: "Terminal", type: "app", note: "Zsh / Bash" },
+                        { name: "Docker", type: "app", note: "Containers" },
+                        { name: "Postman", type: "app", note: "API Testing" }
+                    ],
+                    "Docs": [
+                        { name: "MDN Web", type: "link", note: "HTML/CSS Reference" },
+                        { name: "React Docs", type: "link", note: "Framework API" },
+                        { name: "Specs.pdf", type: "file", note: "Functional requirements" }
+                    ]
+                }
+            },
+            sales: {
+                contexts: [
+                    { name: "Leads", icon: "link" },
+                    { name: "Pitch Deck", icon: "file" },
+                    { name: "Contracts", icon: "folder" }
+                ],
+                items: {
+                    "Leads": [
+                        { name: "Salesforce", type: "app", note: "CRM" },
+                        { name: "Prospect List", type: "file", note: "Jan 2026 Contacts" },
+                        { name: "LinkedIn", type: "link", note: "Outreach" }
+                    ],
+                    "Pitch Deck": [
+                        { name: "Presentation", type: "file", note: "v2.1 Final" },
+                        { name: "Case Studies", type: "folder", note: "Success stories" }
+                    ],
+                    "Contracts": [
+                        { name: "NDA Template", type: "file", note: "Legal" },
+                        { name: "Signed Docs", type: "folder", note: "Active clients" }
+                    ]
+                }
+            },
+            arch: {
+                contexts: [
+                    { name: "Residential", icon: "folder" },
+                    { name: "Public Space", icon: "file" },
+                    { name: "Assets", icon: "folder" }
+                ],
+                items: {
+                    "Residential": [
+                        { name: "Plan A-01", type: "file", note: "Floor plans" },
+                        { name: "AutoCAD", type: "app", note: "Drafting" },
+                        { name: "House Photos", type: "folder", note: "Progress" }
+                    ],
+                    "Public Space": [
+                        { name: "City Hall Map", type: "file", note: "Urban planning" },
+                        { name: "Sketchup", type: "app", note: "3D Render" }
+                    ],
+                    "Assets": [
+                        { name: "Furniture Lib", type: "folder", note: "BIM objects" },
+                        { name: "Textures", type: "folder", note: "High-res mats" }
+                    ]
+                }
+            },
+            eng: {
+                contexts: [
+                    { name: "Structure", icon: "file" },
+                    { name: "Budget", icon: "app" },
+                    { name: "Timeline", icon: "folder" }
+                ],
+                items: {
+                    "Structure": [
+                        { name: "Analysis.pdf", type: "file", note: "Stress test" },
+                        { name: "SAP2000", type: "app", note: "Simulation" }
+                    ],
+                    "Budget": [
+                        { name: "Costs.xlsx", type: "file", note: "Materials" },
+                        { name: "Excel", type: "app", note: "Formula editor" }
+                    ],
+                    "Timeline": [
+                        { name: "Gantt Chart", type: "file", note: "Project flow" },
+                        { name: "Site Diary", type: "folder", note: "Daily logs" }
+                    ]
+                }
+            },
+            acc: {
+                contexts: [
+                    { name: "Reports", icon: "file" },
+                    { name: "Software", icon: "app" },
+                    { name: "Invoices", icon: "folder" }
+                ],
+                items: {
+                    "Reports": [
+                        { name: "Balance Sheet", type: "file", note: "Q1 2026" },
+                        { name: "Tax Audit", type: "file", note: "Annual" }
+                    ],
+                    "Software": [
+                        { name: "ERP v4", type: "app", note: "Accounting system" },
+                        { name: "QuickBooks", type: "app", note: "Financials" }
+                    ],
+                    "Invoices": [
+                        { name: "Pending", type: "folder", note: "To be approved" },
+                        { name: "Paid 2025", type: "folder", note: "Archive" }
+                    ]
+                }
+            }
+        }
+
+        let currentLang = 'en';
+        let activeUseCaseKey = 'dev';
+
+        function toggleLang() {
+            currentLang = currentLang === 'en' ? 'es' : 'en';
+            document.getElementById('lang-toggle').textContent = currentLang === 'en' ? 'ES' : 'EN';
+            applyTranslations();
+            setUseCase(activeUseCaseKey);
+        }
+
+        function applyTranslations() {
+            const data = content[currentLang];
+            for (let id in data) {
+                const el = document.getElementById(id);
+                if (el) el.textContent = data[id];
+            }
+            document.querySelectorAll('.case-tab').forEach(tab => {
+                const key = tab.getAttribute('data-key');
+                if (data[key]) tab.textContent = data[key];
+            });
+        }
+
+        function setUseCase(key) {
+            activeUseCaseKey = key;
+            document.querySelectorAll('.case-tab').forEach(t => t.classList.remove('active'));
+            document.querySelector(`[onclick="setUseCase('${key}')"]`).classList.add('active');
+
+            const data = useCases[key];
+            const contextContainer = document.getElementById('mock-contexts');
+
+            const allLabel = currentLang === 'es' ? 'Todos' : 'All';
+
+            let contextsHtml = `
+                <div class="mock-item active" 
+                     onclick="switchContext('${key}', 'Todos', this)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    ${allLabel}
+                </div>
+            `;
+
+            contextsHtml += data.contexts.map((c, i) => `
+                <div class="mock-item" 
+                     onclick="switchContext('${key}', '${c.name}', this)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        ${getIcon(c.icon)}
+                    </svg>
+                    ${c.name}
+                </div>
+            `).join('');
+
+            contextContainer.innerHTML = contextsHtml;
+
+            // Cargar "Todos" por defecto
+            switchContext(key, 'Todos');
+        }
+
+        function switchContext(useCaseKey, contextName, element) {
+            if (element) {
+                document.querySelectorAll('.mock-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                element.classList.add('active');
+            }
+
+            let items = [];
+            const data = useCases[useCaseKey];
+
+            if (contextName === 'Todos') {
+                // Aggregate all items
+                for (let ctx in data.items) {
+                    items = items.concat(data.items[ctx]);
+                }
+            } else {
+                items = data.items[contextName] || [];
+            }
+
+            const gridContainer = document.getElementById('mock-grid');
+
+            gridContainer.innerHTML = items.map(item => `
+                <div class="mock-card ${item.note ? 'has-note' : ''}">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        ${getIcon(item.type)}
+                    </svg>
+                    <div class="card-title">${item.name}</div>
+                    <div class="card-note">${item.note}</div>
+                </div>
+            `).join('');
+        }
+
+        function getIcon(type) {
+            if (type === 'app') return '<rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line>';
+            if (type === 'folder') return '<path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>';
+            if (type === 'file') return '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline>';
+            return '<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>';
+        }
+
+        // Init
+        setUseCase('dev');
+    </script>
+</body>
+
+</html>
