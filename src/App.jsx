@@ -66,6 +66,27 @@ const PrismLogo = ({ className = "w-8 h-8" }) => (
 const App = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [activeTab, setActiveTab] = useState('todos');
+    const [isNotifyModalOpen, setIsNotifyModalOpen] = useState(false);
+    const [notifyProject, setNotifyProject] = useState(null);
+    const [email, setEmail] = useState('');
+    const [isSubmitted, setIsSubmitted] = useState(false);
+
+    const openNotifyModal = (project) => {
+        setNotifyProject(project);
+        setIsNotifyModalOpen(true);
+        setIsSubmitted(false);
+        setEmail('');
+    };
+
+    const handleNotifySubmit = (e) => {
+        e.preventDefault();
+        // Aquí iría la lógica de integración con un backend o servicio de mailing
+        console.log(`Email registrado para ${notifyProject.title}: ${email}`);
+        setIsSubmitted(true);
+        setTimeout(() => {
+            setIsNotifyModalOpen(false);
+        }, 2000);
+    };
 
     const projects = [
         {
@@ -82,10 +103,12 @@ const App = () => {
             id: 1,
             title: "IGNITION Breathwork",
             description: "Técnicas de respiración guiadas con retroalimentación háptica. Transforma tu estado mental en minutos.",
-            status: "beta",
+            status: "lanzado",
             tags: ["Salud", "Bienestar"],
-            icon: <Flame className="w-8 h-8 text-orange-500" />
+            icon: <Flame className="w-8 h-8 text-orange-500" />,
+            link: "https://gw86-ar.github.io/IGNITION_Breathwork/"
         },
+
         {
             id: 2,
             title: "EETT Visual",
@@ -180,12 +203,16 @@ const App = () => {
                 );
             default:
                 return (
-                    <button className="w-full mt-4 py-3 bg-transparent hover:bg-slate-900/50 text-slate-400 hover:text-slate-300 border border-slate-800 border-dashed hover:border-slate-600 rounded-lg font-medium text-sm transition-all duration-300 flex items-center justify-center gap-2 active:scale-95">
+                    <button
+                        onClick={() => openNotifyModal(project)}
+                        className="w-full mt-4 py-3 bg-transparent hover:bg-slate-900/50 text-slate-400 hover:text-slate-300 border border-slate-800 border-dashed hover:border-slate-600 rounded-lg font-medium text-sm transition-all duration-300 flex items-center justify-center gap-2 active:scale-95"
+                    >
                         <Bell size={16} /> Notificarme
                     </button>
                 );
         }
     };
+
 
     return (
         <div className="min-h-screen bg-slate-950 text-slate-200 font-sans selection:bg-orange-500/30 overflow-x-hidden">
@@ -438,8 +465,64 @@ const App = () => {
                     </div>
                 </div>
             </footer>
+
+            {/* Notification Modal */}
+            {isNotifyModalOpen && (
+                <div className="fixed inset-0 z-[100] flex items-center justify-center px-4">
+                    <div className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onClick={() => setIsNotifyModalOpen(false)} />
+                    <div className="relative glass-effect border border-slate-800 p-8 rounded-3xl max-w-md w-full animate-fade-in-up">
+                        <button
+                            onClick={() => setIsNotifyModalOpen(false)}
+                            className="absolute top-4 right-4 text-slate-500 hover:text-white transition-colors"
+                        >
+                            <X size={20} />
+                        </button>
+
+                        <div className="text-center mb-8">
+                            <div className="w-16 h-16 bg-slate-900/50 border border-slate-800 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                                <Bell className="text-orange-500 w-8 h-8" />
+                            </div>
+                            <h3 className="text-2xl font-bold text-white mb-2 tracking-tight">¡Mantente informado!</h3>
+                            <p className="text-slate-400 text-sm font-light">
+                                ¿Te interesa <span className="text-orange-400 font-semibold">{notifyProject?.title}</span>? Déjanos tu correo y te avisaremos apenas esté listo.
+                            </p>
+                        </div>
+
+                        {!isSubmitted ? (
+                            <form onSubmit={handleNotifySubmit} className="space-y-4">
+                                <input
+                                    type="email"
+                                    required
+                                    placeholder="tu@email.com"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-orange-500/50 transition-colors"
+                                />
+                                <button
+                                    type="submit"
+                                    className="w-full py-4 bg-orange-600 hover:bg-orange-700 text-white rounded-xl font-bold transition-all duration-300 shadow-lg shadow-orange-900/20 active:scale-95"
+                                >
+                                    Suscribirme
+                                </button>
+                            </form>
+                        ) : (
+                            <div className="text-center py-6 animate-fade-in">
+                                <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <CheckCircle2 className="text-green-500 w-6 h-6" />
+                                </div>
+                                <p className="text-green-400 font-bold">¡Registrado con éxito!</p>
+                            </div>
+                        )}
+
+                        <p className="mt-6 text-[10px] text-slate-500 text-center uppercase tracking-widest font-bold">
+                            Promesa Oktober Lab: Cero Spam.
+                        </p>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
 
 export default App;
+
