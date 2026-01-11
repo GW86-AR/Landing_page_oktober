@@ -98,7 +98,6 @@ const App = () => {
             icon: <PrismLogo className="w-8 h-8" />,
             link: "Prism/prism-workspace.html"
         },
-
         {
             id: 1,
             title: "IGNITION Breathwork",
@@ -108,7 +107,6 @@ const App = () => {
             icon: <Flame className="w-8 h-8 text-orange-500" />,
             link: "https://gw86-ar.github.io/IGNITION_Breathwork/"
         },
-
         {
             id: 2,
             title: "EETT Visual",
@@ -124,38 +122,6 @@ const App = () => {
             status: "desarrollo",
             tags: ["Deporte", "Analytics"],
             icon: <Activity className="w-8 h-8 text-green-500" />
-        },
-        {
-            id: 4,
-            title: "Motor Arq OGUC",
-            description: "Decisiones arquitectónicas basadas en la normativa OGUC. Consulta inteligente para profesionales.",
-            status: "desarrollo",
-            tags: ["Arquitectura", "Legal"],
-            icon: <Building2 className="w-8 h-8 text-purple-500" />
-        },
-        {
-            id: 5,
-            title: "APP DfMA Mass Timber",
-            description: "Optimización de diseño para fabricación y montaje en construcción con madera masiva.",
-            status: "desarrollo",
-            tags: ["Construcción", "Ingeniería"],
-            icon: <Hammer className="w-8 h-8 text-amber-600" />
-        },
-        {
-            id: 6,
-            title: "App Medicamento",
-            description: "Gestión inteligente de medicamentos y recordatorios. Tu salud bajo control.",
-            status: "desarrollo",
-            tags: ["Salud", "Utilidad"],
-            icon: <Pill className="w-8 h-8 text-red-500" />
-        },
-        {
-            id: 7,
-            title: "Sistema de Riego",
-            description: "Planificación y automatización de sistemas de riego. Eficiencia hídrica para tu cultivo.",
-            status: "desarrollo",
-            tags: ["Agricultura", "IoT"],
-            icon: <Droplets className="w-8 h-8 text-cyan-500" />
         }
     ];
 
