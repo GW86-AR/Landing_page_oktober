@@ -75,7 +75,7 @@ const App = () => {
             status: "lanzado",
             tags: ["Productividad", "Premium"],
             icon: <PrismLogo className="w-8 h-8" />,
-            link: "/Prism/prism-workspace.html"
+            link: "Prism/prism-workspace.html"
         },
 
         {
@@ -279,7 +279,7 @@ const App = () => {
                                         : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
                                         }`}
                                 >
-                                    {tab === 'todos' ? 'Ver Todo' : tab}
+                                    {tab === 'todos' ? 'Ver Todo' : tab.charAt(0).toUpperCase() + tab.slice(1)}
                                 </button>
                             ))}
                         </div>
