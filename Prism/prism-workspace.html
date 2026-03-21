@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -137,6 +137,97 @@
         .cta-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 30px rgba(58, 134, 255, 0.3);
+        }
+
+        .comparison-section {
+            padding: 8rem 0;
+            background: rgba(255, 255, 255, 0.02);
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 3rem;
+            background: var(--glass-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .comparison-table th {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--accent-color);
+            font-family: 'Outfit', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .prism-col {
+            background: rgba(58, 134, 255, 0.05);
+            font-weight: 600;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 2.5rem;
+            border-radius: 24px;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+        }
+
+        .feature-card i {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .feature-card p {
+            color: var(--text-dim);
+            font-size: 1rem;
+        }
+
+        .price-badge {
+            display: inline-block;
+            background: rgba(58, 134, 255, 0.1);
+            color: var(--accent-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
         }
 
         .showcase {
@@ -454,25 +545,70 @@
                 <span>PRISM <span>Workspace</span></span>
             </a>
             <div class="nav-actions">
-                <button id="lang-toggle" class="lang-btn" onclick="toggleLang()">ES</button>
+                <button id="lang-toggle" class="lang-btn" onclick="toggleLang()">EN</button>
             </div>
         </header>
 
         <section class="hero">
-            <h1 id="hero-title">Your Command Center, Reinvented.</h1>
-            <p id="hero-desc">The visual workspace that professionalizes your routine. Organize folders, docs, and links
-                into contexts for frictionless focus.</p>
-            <a href="ms-windows-store://pdp/?ProductId=..." class="cta-btn" id="hero-cta">Download PRISM</a>
+            <h1 id="hero-title">Your Workflow, Professionalized.</h1>
+            <p id="hero-desc">PRISM is your personal control panel: a desktop HUD that organizes your projects by
+                context. Premium aesthetics meets effortless productivity.</p>
+            <div class="price-badge" id="hero-price">Free to start. Pro to dominate.</div>
+            <br>
+            <a href="https://apps.microsoft.com/detail/9ph8vp18zdxm" class="cta-btn" id="hero-cta" target="_blank"
+                rel="noopener noreferrer">Download PRISM Workspace</a>
         </section>
 
-        <section class="showcase">
-            <h2 class="section-title" id="showcase-title">Built for every professional</h2>
+        <section class="comparison-section" id="comparison">
+            <div class="container">
+                <h2 class="section-title" id="comp-title">Why PRISM?</h2>
+                <div style="overflow-x: auto;">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th id="th-tool">Alternative</th>
+                                <th id="th-limit">Limitation</th>
+                                <th class="prism-col">PRISM Workspace</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td id="td-shortcuts">Desktop Shortcuts</td>
+                                <td id="td-shortcuts-limit">No organization, visual chaos.</td>
+                                <td class="prism-col" id="td-prism-shortcuts">Contexts with filters and integrated
+                                    notes.</td>
+                            </tr>
+                            <tr>
+                                <td id="td-notion">Notion / Obsidian</td>
+                                <td id="td-notion-limit">Requires internet, heavy/slow.</td>
+                                <td class="prism-col" id="td-prism-notion">100% local, opens in &lt; 1 second.</td>
+                            </tr>
+                            <tr>
+                                <td id="td-taskbar">Windows Taskbar</td>
+                                <td id="td-taskbar-limit">Only apps, no files or direct links.</td>
+                                <td class="prism-col" id="td-prism-taskbar">Supports apps, files, folders, and URLs.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td id="td-stardock">Stardock / StartAllBack</td>
+                                <td id="td-stardock-limit">Pure aesthetics, no workflow value.</td>
+                                <td class="prism-col" id="td-prism-stardock">Stunning aesthetics AND optimized workflow.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="container showcase">
+            <h2 class="section-title" id="showcase-title">A Context for Every Identity</h2>
             <div class="use-case-nav">
-                <button class="case-tab active" onclick="setUseCase('dev')" data-key="tab-dev">Developer</button>
-                <button class="case-tab" onclick="setUseCase('sales')" data-key="tab-sales">Sales</button>
-                <button class="case-tab" onclick="setUseCase('arch')" data-key="tab-arch">Architect</button>
-                <button class="case-tab" onclick="setUseCase('eng')" data-key="tab-eng">Civil Engineer</button>
-                <button class="case-tab" onclick="setUseCase('acc')" data-key="tab-acc">Accountant</button>
+                <button class="case-tab active" onclick="setUseCase('pm')" data-key="tab-pm">Product Manager</button>
+                <button class="case-tab" onclick="setUseCase('designer')" data-key="tab-designer">Designer</button>
+                <button class="case-tab" onclick="setUseCase('devops')" data-key="tab-devops">DevOps</button>
+                <button class="case-tab" onclick="setUseCase('student')" data-key="tab-student">Student</button>
+                <button class="case-tab" onclick="setUseCase('streamer')" data-key="tab-streamer">Streamer</button>
             </div>
 
             <div class="app-mockup">
@@ -544,6 +680,29 @@
             </div>
         </section>
 
+        <section class="container features-section">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="price-badge" id="feat-privacy-badge">Privacy</div>
+                    <h3 id="feat-privacy-title">100% Local</h3>
+                    <p id="feat-privacy-desc">Your data never leaves your computer. No cloud, no account, no tracking.
+                        Complete privacy by design.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="price-badge" id="feat-notes-badge">Smart</div>
+                    <h3 id="feat-notes-title">Integrated Notes</h3>
+                    <p id="feat-notes-desc">Attach reminder notes directly to any shortcut. Never forget the status or
+                        context of your files again.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="price-badge" id="feat-backup-badge">Safety</div>
+                    <h3 id="feat-backup-title">Backup & Restore</h3>
+                    <p id="feat-backup-desc">Export your entire workspace configuration and visual identity in one
+                        click. Deploy on any machine instantly.</p>
+                </div>
+            </div>
+        </section>
+
         <footer class="footer">
             <div class="footer-links">
                 <a href="https://gw86-ar.github.io/Landing_page_oktober/" target="_blank"
@@ -558,156 +717,206 @@
     <script>
         const content = {
             en: {
-                "hero-title": "Your Command Center, Reinvented.",
-                "hero-desc": "The visual workspace that professionalizes your routine. Organize folders, docs, and links into contexts for frictionless focus.",
-                "hero-cta": "Download PRISM",
-                "showcase-title": "Built for every professional",
+                "hero-title": "Your Workflow, Professionalized.",
+                "hero-desc": "PRISM is your personal control panel: a desktop HUD that organizes your projects by context. Premium aesthetics meets effortless productivity.",
+                "hero-cta": "Download PRISM Workspace",
+                "hero-price": "Free to start. Pro to dominate.",
+                "showcase-title": "A Context for Every Identity",
+                "comp-title": "Why PRISM?",
+                "th-tool": "Alternative",
+                "th-limit": "Limitation",
+                "td-shortcuts": "Desktop Shortcuts",
+                "td-shortcuts-limit": "No organization, visual chaos.",
+                "td-prism-shortcuts": "Contexts with filters and integrated notes.",
+                "td-notion": "Notion / Obsidian",
+                "td-notion-limit": "Requires internet, heavy/slow.",
+                "td-prism-notion": "100% local, opens in < 1 second.",
+                "td-taskbar": "Windows Taskbar",
+                "td-taskbar-limit": "Only apps, no files or direct links.",
+                "td-prism-taskbar": "Supports apps, files, folders, and URLs.",
+                "td-stardock": "Stardock / StartAllBack",
+                "td-stardock-limit": "Pure aesthetics, no workflow value.",
+                "td-prism-stardock": "Stunning aesthetics AND optimized workflow.",
                 "context-label": "Contexts",
-                "tab-dev": "Developer",
-                "tab-sales": "Sales",
-                "tab-arch": "Architect",
-                "tab-eng": "Civil Engineer",
-                "tab-acc": "Accountant",
+                "tab-pm": "Product Manager",
+                "tab-designer": "Designer",
+                "tab-devops": "DevOps",
+                "tab-student": "Student",
+                "tab-streamer": "Streamer",
                 "link-privacy": "Privacy Policy",
                 "link-terms": "Terms of Service",
+                "feat-privacy-badge": "Privacy",
+                "feat-privacy-title": "100% Local",
+                "feat-privacy-desc": "Your data never leaves your computer. No cloud, no account, no tracking. Complete privacy by design.",
+                "feat-notes-badge": "Smart",
+                "feat-notes-title": "Integrated Notes",
+                "feat-notes-desc": "Attach reminder notes directly to any shortcut. Never forget the status or context of your files again.",
+                "feat-backup-badge": "Safety",
+                "feat-backup-title": "Backup & Restore",
+                "feat-backup-desc": "Export your entire workspace configuration and visual identity in one click. Deploy on any machine instantly.",
                 "footer-copy": "&copy; 2026 Oktober Lab. All rights reserved."
             },
             es: {
-                "hero-title": "Tu Centro de Mando, Reinventado.",
-                "hero-desc": "El espacio de trabajo visual que profesionaliza tu rutina. Organiza carpetas, documentos y enlaces en contextos para un enfoque sin fricciones.",
-                "hero-cta": "Descargar PRISM",
-                "showcase-title": "Diseñado para cada profesional",
+                "hero-title": "Tu Flujo de Trabajo, Profesionalizado.",
+                "hero-desc": "PRISM es tu panel de control personal: un HUD de escritorio que organiza tus proyectos por contexto. Estética premium y productividad sin esfuerzo.",
+                "hero-cta": "Descargar PRISM Workspace",
+                "hero-price": "Gratis para empezar. Pro para dominar.",
+                "showcase-title": "Un Contexto para cada Identidad",
+                "comp-title": "¿Por qué PRISM?",
+                "th-tool": "Herramienta",
+                "th-limit": "Limitación",
+                "td-shortcuts": "Accesos directos",
+                "td-shortcuts-limit": "Sin organización, caos visual.",
+                "td-prism-shortcuts": "Contextos con filtros y notas integradas.",
+                "td-notion": "Notion / Obsidian",
+                "td-notion-limit": "Requieren internet, pesados.",
+                "td-prism-notion": "100% local, abre en < 1 segundo.",
+                "td-taskbar": "Barra de tareas",
+                "td-taskbar-limit": "Solo apps, no archivos/links.",
+                "td-prism-taskbar": "Soporta apps, archivos, carpetas y URLs.",
+                "td-stardock": "Stardock / StartAllBack",
+                "td-stardock-limit": "Solo estética, sin valor de flujo.",
+                "td-prism-stardock": "Estética increíble Y flujo optimizado.",
                 "context-label": "Contextos",
-                "tab-dev": "Programador",
-                "tab-sales": "Ventas",
-                "tab-arch": "Arquitecto",
-                "tab-eng": "Ing. Civil",
-                "tab-acc": "Contable",
+                "tab-pm": "Project Manager",
+                "tab-designer": "Diseñador",
+                "tab-devops": "DevOps",
+                "tab-student": "Estudiante",
+                "tab-streamer": "Streamer",
                 "link-privacy": "Política de Privacidad",
                 "link-terms": "Términos de Servicio",
+                "feat-privacy-badge": "Privacidad",
+                "feat-privacy-title": "100% Local",
+                "feat-privacy-desc": "Tus datos nunca salen de tu equipo. Sin nube, sin cuentas, sin rastreo. Privacidad total por diseño.",
+                "feat-notes-badge": "Inteligente",
+                "feat-notes-title": "Notas Integradas",
+                "feat-notes-desc": "Adjunta notas recordatorias directamente a cualquier acceso directo. No vuelvas a olvidar el estado de tus archivos.",
+                "feat-backup-badge": "Seguridad",
+                "feat-backup-title": "Respaldo y Restauración",
+                "feat-backup-desc": "Exporta toda tu configuración e identidad visual en un clic. Restaura en cualquier equipo al instante.",
                 "footer-copy": "&copy; 2026 Oktober Lab. Todos los derechos reservados."
             }
         };
 
         const useCases = {
-            dev: {
+            pm: {
                 contexts: [
-                    { name: "Project Alpha", icon: "folder" },
-                    { name: "Dev Tools", icon: "app" },
-                    { name: "Docs", icon: "file" }
+                    { name: "Q1 Launch", icon: "folder" },
+                    { name: "Resources", icon: "app" },
+                    { name: "Team Sync", icon: "file" }
                 ],
                 items: {
-                    "Project Alpha": [
-                        { name: "VS Code", type: "app", note: "Main IDE" },
-                        { name: "Local Server", type: "link", note: "localhost:3000" },
-                        { name: "Repo Folder", type: "folder", note: "Git source" }
+                    "Q1 Launch": [
+                        { name: "Roadmap.pdf", type: "file", note: "Product focus" },
+                        { name: "Jira Dashboard", type: "link", note: "Ticket tracking" },
+                        { name: "Slack", type: "app", note: "Communications" }
                     ],
-                    "Dev Tools": [
-                        { name: "Terminal", type: "app", note: "Zsh / Bash" },
-                        { name: "Docker", type: "app", note: "Containers" },
-                        { name: "Postman", type: "app", note: "API Testing" }
+                    "Resources": [
+                        { name: "Competitor Analysis", type: "file", note: "Market research" },
+                        { name: "Asset Folder", type: "folder", note: "Brand guidelines" }
                     ],
-                    "Docs": [
-                        { name: "MDN Web", type: "link", note: "HTML/CSS Reference" },
-                        { name: "React Docs", type: "link", note: "Framework API" },
-                        { name: "Specs.pdf", type: "file", note: "Functional requirements" }
+                    "Team Sync": [
+                        { name: "Meeting Notes", type: "file", note: "Daily standup" },
+                        { name: "Calendar", type: "app", note: "Schedules" }
                     ]
                 }
             },
-            sales: {
+            designer: {
                 contexts: [
-                    { name: "Leads", icon: "link" },
-                    { name: "Pitch Deck", icon: "file" },
-                    { name: "Contracts", icon: "folder" }
+                    { name: "Active Projects", icon: "folder" },
+                    { name: "Inspiration", icon: "link" },
+                    { name: "Templates", icon: "file" }
                 ],
                 items: {
-                    "Leads": [
-                        { name: "Salesforce", type: "app", note: "CRM" },
-                        { name: "Prospect List", type: "file", note: "Jan 2026 Contacts" },
-                        { name: "LinkedIn", type: "link", note: "Outreach" }
+                    "Active Projects": [
+                        { name: "Prism UI.fig", type: "link", note: "Figma design" },
+                        { name: "Photoshop", type: "app", note: "Editing" },
+                        { name: "Exported Assets", type: "folder", note: "Final PNGs" }
                     ],
-                    "Pitch Deck": [
-                        { name: "Presentation", type: "file", note: "v2.1 Final" },
-                        { name: "Case Studies", type: "folder", note: "Success stories" }
+                    "Inspiration": [
+                        { name: "Pinterest Board", type: "link", note: "Moodboard" },
+                        { name: "Dribbble", type: "link", note: "Trends" }
                     ],
-                    "Contracts": [
-                        { name: "NDA Template", type: "file", note: "Legal" },
-                        { name: "Signed Docs", type: "folder", note: "Active clients" }
+                    "Templates": [
+                        { name: "Social Post", type: "file", note: "PSD template" },
+                        { name: "Style Guide", type: "file", note: "Typography" }
                     ]
                 }
             },
-            arch: {
+            devops: {
                 contexts: [
-                    { name: "Residential", icon: "folder" },
-                    { name: "Public Space", icon: "file" },
-                    { name: "Assets", icon: "folder" }
+                    { name: "Infrastructure", icon: "folder" },
+                    { name: "Monitoring", icon: "link" },
+                    { name: "Scripts", icon: "file" }
                 ],
                 items: {
-                    "Residential": [
-                        { name: "Plan A-01", type: "file", note: "Floor plans" },
-                        { name: "AutoCAD", type: "app", note: "Drafting" },
-                        { name: "House Photos", type: "folder", note: "Progress" }
+                    "Infrastructure": [
+                        { name: "AWS Console", type: "link", note: "EC2/S3" },
+                        { name: "Terraform", type: "app", note: "IaC" },
+                        { name: "Docker Desktop", type: "app", note: "Containers" }
                     ],
-                    "Public Space": [
-                        { name: "City Hall Map", type: "file", note: "Urban planning" },
-                        { name: "Sketchup", type: "app", note: "3D Render" }
+                    "Monitoring": [
+                        { name: "Grafana", type: "link", note: "Real-time metrics" },
+                        { name: "Sentry", type: "link", note: "Error logging" }
                     ],
-                    "Assets": [
-                        { name: "Furniture Lib", type: "folder", note: "BIM objects" },
-                        { name: "Textures", type: "folder", note: "High-res mats" }
+                    "Scripts": [
+                        { name: "Deploy.sh", type: "file", note: "Bash script" },
+                        { name: "K8s Config", type: "folder", note: "YAML files" }
                     ]
                 }
             },
-            eng: {
+            student: {
                 contexts: [
-                    { name: "Structure", icon: "file" },
-                    { name: "Budget", icon: "app" },
-                    { name: "Timeline", icon: "folder" }
+                    { name: "Computer Science", icon: "folder" },
+                    { name: "Homework", icon: "file" },
+                    { name: "Online Courses", icon: "link" }
                 ],
                 items: {
-                    "Structure": [
-                        { name: "Analysis.pdf", type: "file", note: "Stress test" },
-                        { name: "SAP2000", type: "app", note: "Simulation" }
+                    "Computer Science": [
+                        { name: "Lecture Notes", type: "file", note: "Algorithms" },
+                        { name: "VS Code", type: "app", note: "Python tasks" },
+                        { name: "GitHub", type: "link", note: "Lab repos" }
                     ],
-                    "Budget": [
-                        { name: "Costs.xlsx", type: "file", note: "Materials" },
-                        { name: "Excel", type: "app", note: "Formula editor" }
+                    "Homework": [
+                        { name: "Math Assign", type: "file", note: "Calculus" },
+                        { name: "Library PDF", type: "file", note: "Reference" }
                     ],
-                    "Timeline": [
-                        { name: "Gantt Chart", type: "file", note: "Project flow" },
-                        { name: "Site Diary", type: "folder", note: "Daily logs" }
+                    "Online Courses": [
+                        { name: "Coursera", type: "link", note: "Data Science" },
+                        { name: "YouTube Tutorials", type: "link", note: "Watch list" }
                     ]
                 }
             },
-            acc: {
+            streamer: {
                 contexts: [
-                    { name: "Reports", icon: "file" },
-                    { name: "Software", icon: "app" },
-                    { name: "Invoices", icon: "folder" }
+                    { name: "Live Setup", icon: "folder" },
+                    { name: "Overlays", icon: "file" },
+                    { name: "Social Media", icon: "link" }
                 ],
                 items: {
-                    "Reports": [
-                        { name: "Balance Sheet", type: "file", note: "Q1 2026" },
-                        { name: "Tax Audit", type: "file", note: "Annual" }
+                    "Live Setup": [
+                        { name: "OBS Studio", type: "app", note: "Streaming" },
+                        { name: "Twitch Dashboard", type: "link", note: "Chat/Activity" },
+                        { name: "Spotify", type: "app", note: "Background music" }
                     ],
-                    "Software": [
-                        { name: "ERP v4", type: "app", note: "Accounting system" },
-                        { name: "QuickBooks", type: "app", note: "Financials" }
+                    "Overlays": [
+                        { name: "Alert Set", type: "folder", note: "GFX files" },
+                        { name: "Camera Frame", type: "file", note: "PNG overlay" }
                     ],
-                    "Invoices": [
-                        { name: "Pending", type: "folder", note: "To be approved" },
-                        { name: "Paid 2025", type: "folder", note: "Archive" }
+                    "Social Media": [
+                        { name: "X / Twitter", type: "link", note: "Go-live tweet" },
+                        { name: "Discord", type: "app", note: "Community" }
                     ]
                 }
             }
         }
 
-        let currentLang = 'en';
-        let activeUseCaseKey = 'dev';
+        let currentLang = 'es';
+        let activeUseCaseKey = 'pm';
 
         function toggleLang() {
-            currentLang = currentLang === 'en' ? 'es' : 'en';
-            document.getElementById('lang-toggle').textContent = currentLang === 'en' ? 'ES' : 'EN';
+            currentLang = currentLang === 'es' ? 'en' : 'es';
+            document.getElementById('lang-toggle').textContent = currentLang === 'es' ? 'EN' : 'ES';
             applyTranslations();
             setUseCase(activeUseCaseKey);
         }
@@ -800,8 +1009,9 @@
             return '<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>';
         }
 
-        // Init
-        setUseCase('dev');
+        // Initialize
+        applyTranslations();
+        setUseCase(activeUseCaseKey);
     </script>
 </body>
 
